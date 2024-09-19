@@ -25,7 +25,8 @@ const Home = () => {
       <h1 className="text-center text-4xl mt-2">Vite + React + TypeScript</h1>
       <CountButtonSet />
       <div className="flex justify-center mt-3">
-        <LinkButton label="Coffee" to="/sample" />
+        <LinkButton label="Sample" to="/sample" />
+        <LinkButton label="Todo" to="/todo" />
       </div>
     </>
   );

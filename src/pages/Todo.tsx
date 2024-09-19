@@ -1,32 +1,10 @@
-import { useEffect, useState } from "react";
-import { getRequest } from "../components/Request";
+import SubmitButton from "../components/button/SubmitButton";
 
-interface SampleRespons {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  ingredients: string[];
-}
-
-/**
- * @returns サンプル一覧画面
- */
-const SampleList = () => {
-  const [coffee, setCoffee] = useState<SampleRespons[]>();
-
-  const callback = (res: SampleRespons[]): void => {
-    setCoffee(res);
-  };
-
-  useEffect(() => {
-    getRequest("https://api.sampleapis.com/coffee/hot", callback);
-  }, []);
-
+const Todo = () => {
   return (
     <>
-      <h1 className="text-4xl m-2">Coffee List</h1>
-      {/* <form className="max-w-4xl mx-auto">
+      <h1 className="text-4xl m-2">Todo List</h1>
+      <form className="max-w-4xl mx-auto">
         <div className="relative z-0 w-full mb-5 group">
           <input
             type="email"
@@ -43,12 +21,9 @@ const SampleList = () => {
         <div className="flex justify-end">
           <SubmitButton label="Add" requestUrl="/" />
         </div>
-      </form> */}
-      {coffee?.map((c) => {
-        return <p>{c.title} </p>;
-      })}
+      </form>
     </>
   );
 };
 
-export default SampleList;
+export default Todo;

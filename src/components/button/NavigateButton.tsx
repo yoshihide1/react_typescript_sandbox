@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ButtonBase from "./ButtonBase";
+import GradationBaseButton from "./GradationBaseButton";
 
 interface LinkButtonProps {
   to: string; //遷移先のパス
@@ -14,7 +14,7 @@ interface LinkButtonProps {
 const LinkButton = (props: LinkButtonProps) => {
   return (
     <Link to={props.to}>
-      <ButtonBase label={props.label} buttonColor="green" textColor="white" />
+      <GradationBaseButton label={props.label + " >"} buttonColor="purple" />
     </Link>
   );
 };

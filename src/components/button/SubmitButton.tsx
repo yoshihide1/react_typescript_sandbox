@@ -1,4 +1,4 @@
-import ButtonBase from "./ButtonBase";
+import BaseButton from "./BaseButton";
 
 interface SubmitButtonProps {
   requestUrl: string;
@@ -7,7 +7,7 @@ interface SubmitButtonProps {
 
 const SubmitButton = (props: SubmitButtonProps) => {
   return (
-    <ButtonBase
+    <BaseButton
       buttonType="submit"
       buttonColor="blue"
       textColor="white"

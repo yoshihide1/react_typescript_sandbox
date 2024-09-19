@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ButtonBase from "../button/ButtonBase";
+import BaseButton from "../button/BaseButton";
 
 /**
  * @returns カウントボタンのセット
@@ -24,20 +24,20 @@ const CountButtonSet = () => {
   return (
     <>
       <div className="flex justify-center mt-8">
-        <ButtonBase
-          label="CountUp"
+        <BaseButton
+          label="↑ CountUp"
           onClick={countUp}
           buttonColor="blue"
           textColor="white"
         />
-        <ButtonBase
-          label="CountDown"
+        <BaseButton
+          label="↓ CountDown"
           onClick={countDown}
-          buttonColor="gray"
+          buttonColor="blue"
           textColor="white"
         />
-        <ButtonBase
-          label="Reset"
+        <BaseButton
+          label="× Reset"
           onClick={countReset}
           buttonColor="red"
           textColor="white"

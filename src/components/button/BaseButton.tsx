@@ -1,6 +1,6 @@
 import { background, text } from "../../styles/Color";
 
-interface ButtonBaseProps {
+interface BaseButtonProps {
   buttonColor: string;
   textColor: string;
   label: string;
@@ -8,7 +8,7 @@ interface ButtonBaseProps {
   onClick?: () => void;
 }
 
-const ButtonBase = (props: ButtonBaseProps) => {
+const BaseButton = (props: BaseButtonProps) => {
   const colorClass = background[props.buttonColor] || background.blue;
   const textClass = text[props.textColor] || text.black;
 
@@ -21,7 +21,7 @@ const ButtonBase = (props: ButtonBaseProps) => {
   return (
     <button
       type={props.buttonType || "button"}
-      className={`group relative h-12 overflow-hidden rounded-md ${colorClass} px-6 ${textClass} transition m-1 w-32`}
+      className={`group relative h-12 overflow-hidden rounded-md ${colorClass} px-2 ${textClass} transition m-1 w-32`}
       onClick={handleClick}
     >
       <span>{props.label}</span>
@@ -29,4 +29,4 @@ const ButtonBase = (props: ButtonBaseProps) => {
     </button>
   );
 };
-export default ButtonBase;
+export default BaseButton;
