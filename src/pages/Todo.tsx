@@ -29,8 +29,10 @@ const Todo = () => {
         </form>
       </FormProvider>
       <div>
-        {tasks.map((t) => (
-          <p>{t.task}</p>
+        {tasks.map((t, index) => (
+          <p key={index} className="max-w-4xl mx-auto">
+            {t.task}
+          </p>
         ))}
       </div>
     </>
