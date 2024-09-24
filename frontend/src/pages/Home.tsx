@@ -1,14 +1,27 @@
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
-import tsLogo from "/ts.svg";
-import CountButtonSet from "../components/sample/CountButtonSet";
-import LinkButton from "../components/button/NavigateButton";
+import { useEffect } from 'react';
+import reactLogo from '../assets/react.svg';
+import LinkButton from '../components/button/NavigateButton';
+import { getRequest } from '../components/common/Request';
+import CountButtonSet from '../components/sample/CountButtonSet';
+import tsLogo from '/ts.svg';
+import viteLogo from '/vite.svg';
 
 /**
  *
  * @returns ホーム画面
  */
 const Home = () => {
+  /**
+   * sample(疎通確認)
+   * @param res
+   */
+  const callback = (res: string) => {
+    console.log(res);
+  };
+  useEffect(() => {
+    getRequest('/api/sample', callback);
+  });
+
   return (
     <>
       <div className="flex justify-evenly mt-40">
