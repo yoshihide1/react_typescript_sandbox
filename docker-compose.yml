@@ -7,9 +7,10 @@ services:
       POSTGRES_PASSWORD: 1234 # デフォルトのユーザーパスワード
       POSTGRES_DB: sandbox # デフォルトで作成されるデータベース名
     ports:
-      - "5432:5432" # PostgreSQLのデフォルトポート
+      - '5432:5432' # PostgreSQLのデフォルトポート
     volumes:
       - pgdata:/var/lib/postgresql/data # データの永続化ボリューム
+      - ./db:/docker-entrypoint-initdb.d
 
 volumes:
   pgdata:
