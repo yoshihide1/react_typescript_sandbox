@@ -9,7 +9,8 @@
       "name": "Application",
       "request": "launch",
       "mainClass": "sandbox.Application",
-      "projectName": "backend"
+      "projectName": "backend",
+      "console": "internalConsole"
     }
   ]
 }
