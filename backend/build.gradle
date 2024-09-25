@@ -61,7 +61,7 @@ task mybatisGenerate {
         javaexec {
             main = 'org.mybatis.generator.api.ShellRunner'
             classpath = sourceSets.main.runtimeClasspath
-            args = ['-configfile', 'src/main/resources/mybatis/generatorConfig.xml', '-overwrite']
+            args = ['-configfile', 'src/main/resources/config/generator-config.xml', '-overwrite']
         }
     }
 }

@@ -3,8 +3,8 @@
 <mapper namespace="sandbox.mapper.TodoEntityMapper">
   <resultMap id="BaseResultMap" type="sandbox.entity.TodoEntity">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="value" jdbcType="VARCHAR" property="value" />
-    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="task" jdbcType="VARCHAR" property="task" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, value, created_date, updated_at
+    id, task, created_at, updated_at
   </sql>
   <select id="selectByExample" parameterType="sandbox.entity.example.TodoEntityExample" resultMap="BaseResultMap">
     select
@@ -99,30 +99,30 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="sandbox.entity.TodoEntity" useGeneratedKeys="true">
-    insert into public.todo (value, created_date, updated_at
+    insert into public.todo (task, created_at, updated_at
       )
-    values (#{value,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+    values (#{task,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="sandbox.entity.TodoEntity" useGeneratedKeys="true">
     insert into public.todo
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="value != null">
-        value,
+      <if test="task != null">
+        task,
       </if>
-      <if test="createdDate != null">
-        created_date,
+      <if test="createdAt != null">
+        created_at,
       </if>
       <if test="updatedAt != null">
         updated_at,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="value != null">
-        #{value,jdbcType=VARCHAR},
+      <if test="task != null">
+        #{task,jdbcType=VARCHAR},
       </if>
-      <if test="createdDate != null">
-        #{createdDate,jdbcType=TIMESTAMP},
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
       </if>
       <if test="updatedAt != null">
         #{updatedAt,jdbcType=TIMESTAMP},
@@ -141,11 +141,11 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.value != null">
-        value = #{record.value,jdbcType=VARCHAR},
+      <if test="record.task != null">
+        task = #{record.task,jdbcType=VARCHAR},
       </if>
-      <if test="record.createdDate != null">
-        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updatedAt != null">
         updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
@@ -158,8 +158,8 @@
   <update id="updateByExample" parameterType="map">
     update public.todo
     set id = #{record.id,jdbcType=INTEGER},
-      value = #{record.value,jdbcType=VARCHAR},
-      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      task = #{record.task,jdbcType=VARCHAR},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -168,11 +168,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="sandbox.entity.TodoEntity">
     update public.todo
     <set>
-      <if test="value != null">
-        value = #{value,jdbcType=VARCHAR},
+      <if test="task != null">
+        task = #{task,jdbcType=VARCHAR},
       </if>
-      <if test="createdDate != null">
-        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
       <if test="updatedAt != null">
         updated_at = #{updatedAt,jdbcType=TIMESTAMP},
@@ -182,8 +182,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="sandbox.entity.TodoEntity">
     update public.todo
-    set value = #{value,jdbcType=VARCHAR},
-      created_date = #{createdDate,jdbcType=TIMESTAMP},
+    set task = #{task,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

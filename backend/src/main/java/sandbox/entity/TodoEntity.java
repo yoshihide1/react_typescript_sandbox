@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 public class TodoEntity {
     private Integer id;
 
-    private String value;
+    private String task;
 
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
 
@@ -19,20 +19,20 @@ public class TodoEntity {
         this.id = id;
     }
 
-    public String getValue() {
-        return value;
+    public String getTask() {
+        return task;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setTask(String task) {
+        this.task = task;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {

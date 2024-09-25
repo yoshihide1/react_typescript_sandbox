@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { getRequest } from "../components/common/Request";
-import BackButton from "../components/button/BackButton";
+import { useEffect, useState } from 'react';
+import BackButton from '../components/button/BackButton';
+import { getRequest } from '../components/common/Request';
 
 interface CoffeeResponse {
   id: number;
@@ -14,7 +14,7 @@ interface CoffeeResponse {
  * @returns サンプル一覧画面
  */
 const Coffee = () => {
-  const [coffee, setCoffee] = useState<CoffeeResponse[]>();
+  const [coffee, setCoffee] = useState<CoffeeResponse[]>([]);
 
   const callback = (res: CoffeeResponse[]): void => {
     console.log(res);
@@ -22,7 +22,7 @@ const Coffee = () => {
   };
 
   useEffect(() => {
-    getRequest("https://api.sampleapis.com/coffee/hot", callback);
+    getRequest('https://api.sampleapis.com/coffee/hot', callback);
   }, []);
 
   return (
@@ -46,23 +46,13 @@ const Coffee = () => {
           <tbody>
             {coffee?.map((c, index) => {
               return (
-                <tr
-                  key={index}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                >
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
+                <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {c.title}
                   </th>
                   <td className="px-6 py-4">{c.description}</td>
                   <td className="px-6 py-4">
-                    <img
-                      className="h-32 max-w-lg mx-auto"
-                      src={c.image}
-                      alt="image description"
-                    />
+                    <img className="h-32 max-w-lg mx-auto" src={c.image} alt="image description" />
                   </td>
                 </tr>
               );

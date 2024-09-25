@@ -165,133 +165,133 @@ public class TodoEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andValueIsNull() {
-            addCriterion("value is null");
+        public Criteria andTaskIsNull() {
+            addCriterion("task is null");
             return (Criteria) this;
         }
 
-        public Criteria andValueIsNotNull() {
-            addCriterion("value is not null");
+        public Criteria andTaskIsNotNull() {
+            addCriterion("task is not null");
             return (Criteria) this;
         }
 
-        public Criteria andValueEqualTo(String value) {
-            addCriterion("value =", value, "value");
+        public Criteria andTaskEqualTo(String value) {
+            addCriterion("task =", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotEqualTo(String value) {
-            addCriterion("value <>", value, "value");
+        public Criteria andTaskNotEqualTo(String value) {
+            addCriterion("task <>", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThan(String value) {
-            addCriterion("value >", value, "value");
+        public Criteria andTaskGreaterThan(String value) {
+            addCriterion("task >", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThanOrEqualTo(String value) {
-            addCriterion("value >=", value, "value");
+        public Criteria andTaskGreaterThanOrEqualTo(String value) {
+            addCriterion("task >=", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThan(String value) {
-            addCriterion("value <", value, "value");
+        public Criteria andTaskLessThan(String value) {
+            addCriterion("task <", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThanOrEqualTo(String value) {
-            addCriterion("value <=", value, "value");
+        public Criteria andTaskLessThanOrEqualTo(String value) {
+            addCriterion("task <=", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueLike(String value) {
-            addCriterion("value like", value, "value");
+        public Criteria andTaskLike(String value) {
+            addCriterion("task like", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotLike(String value) {
-            addCriterion("value not like", value, "value");
+        public Criteria andTaskNotLike(String value) {
+            addCriterion("task not like", value, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueIn(List<String> values) {
-            addCriterion("value in", values, "value");
+        public Criteria andTaskIn(List<String> values) {
+            addCriterion("task in", values, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotIn(List<String> values) {
-            addCriterion("value not in", values, "value");
+        public Criteria andTaskNotIn(List<String> values) {
+            addCriterion("task not in", values, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueBetween(String value1, String value2) {
-            addCriterion("value between", value1, value2, "value");
+        public Criteria andTaskBetween(String value1, String value2) {
+            addCriterion("task between", value1, value2, "task");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotBetween(String value1, String value2) {
-            addCriterion("value not between", value1, value2, "value");
+        public Criteria andTaskNotBetween(String value1, String value2) {
+            addCriterion("task not between", value1, value2, "task");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateIsNull() {
-            addCriterion("created_date is null");
+        public Criteria andCreatedAtIsNull() {
+            addCriterion("created_at is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateIsNotNull() {
-            addCriterion("created_date is not null");
+        public Criteria andCreatedAtIsNotNull() {
+            addCriterion("created_at is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateEqualTo(LocalDateTime value) {
-            addCriterion("created_date =", value, "createdDate");
+        public Criteria andCreatedAtEqualTo(LocalDateTime value) {
+            addCriterion("created_at =", value, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateNotEqualTo(LocalDateTime value) {
-            addCriterion("created_date <>", value, "createdDate");
+        public Criteria andCreatedAtNotEqualTo(LocalDateTime value) {
+            addCriterion("created_at <>", value, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateGreaterThan(LocalDateTime value) {
-            addCriterion("created_date >", value, "createdDate");
+        public Criteria andCreatedAtGreaterThan(LocalDateTime value) {
+            addCriterion("created_at >", value, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateGreaterThanOrEqualTo(LocalDateTime value) {
-            addCriterion("created_date >=", value, "createdDate");
+        public Criteria andCreatedAtGreaterThanOrEqualTo(LocalDateTime value) {
+            addCriterion("created_at >=", value, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateLessThan(LocalDateTime value) {
-            addCriterion("created_date <", value, "createdDate");
+        public Criteria andCreatedAtLessThan(LocalDateTime value) {
+            addCriterion("created_at <", value, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateLessThanOrEqualTo(LocalDateTime value) {
-            addCriterion("created_date <=", value, "createdDate");
+        public Criteria andCreatedAtLessThanOrEqualTo(LocalDateTime value) {
+            addCriterion("created_at <=", value, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateIn(List<LocalDateTime> values) {
-            addCriterion("created_date in", values, "createdDate");
+        public Criteria andCreatedAtIn(List<LocalDateTime> values) {
+            addCriterion("created_at in", values, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateNotIn(List<LocalDateTime> values) {
-            addCriterion("created_date not in", values, "createdDate");
+        public Criteria andCreatedAtNotIn(List<LocalDateTime> values) {
+            addCriterion("created_at not in", values, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateBetween(LocalDateTime value1, LocalDateTime value2) {
-            addCriterion("created_date between", value1, value2, "createdDate");
+        public Criteria andCreatedAtBetween(LocalDateTime value1, LocalDateTime value2) {
+            addCriterion("created_at between", value1, value2, "createdAt");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedDateNotBetween(LocalDateTime value1, LocalDateTime value2) {
-            addCriterion("created_date not between", value1, value2, "createdDate");
+        public Criteria andCreatedAtNotBetween(LocalDateTime value1, LocalDateTime value2) {
+            addCriterion("created_at not between", value1, value2, "createdAt");
             return (Criteria) this;
         }
 

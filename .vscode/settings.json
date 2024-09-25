@@ -17,6 +17,7 @@
   // ====================================
   "java.compile.nullAnalysis.mode": "automatic", // // NullPointerExceptionの警告
   "java.configuration.updateBuildConfiguration": "automatic", // build.gradleに修正が入った際に自動で再ビルドをサジェストする
+  "java.autobuild.enabled": true,
   // ====================================
   // フォーマット(全般)
   // ====================================

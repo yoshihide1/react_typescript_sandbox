@@ -1,7 +1,8 @@
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import SubmitButton from "../components/button/SubmitButton";
-import TextInput from "../components/field/TextInput";
-import { useState } from "react";
+import { useState } from 'react';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import SubmitButton from '../components/button/SubmitButton';
+import { postRequest } from '../components/common/Request';
+import TextInput from '../components/field/TextInput';
 
 type Inputs = {
   task: string;
@@ -15,6 +16,7 @@ const Todo = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setTasks((prevTasks) => [...prevTasks, data]);
     reset();
+    postRequest('/api/todo/create', data);
     console.log(data);
   };
   return (
@@ -22,7 +24,7 @@ const Todo = () => {
       <h1 className="text-4xl m-2">Todo List</h1>
       <FormProvider {...hookForm}>
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-4xl mx-auto">
-          <TextInput label="Add Task..." registerName={"task"} />
+          <TextInput label="Add Task..." registerName={'task'} />
           <div className="flex justify-end">
             <SubmitButton label="Add" requestUrl="/" />
           </div>
