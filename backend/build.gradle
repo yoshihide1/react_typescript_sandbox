@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.mybatis.generator:mybatis-generator-core:1.4.0'
+    }
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.4'
@@ -35,9 +44,8 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
   // MyBatisGenerator
-  implementation 'org.mybatis.generator:mybatis-generator-core:1.4.2'
+  implementation 'org.mybatis.generator:mybatis-generator-core:1.4.0'
   implementation "org.postgresql:postgresql:42.7.1"
-  // 自動生成されるファイルで利用
   implementation "org.mybatis.dynamic-sql:mybatis-dynamic-sql:1.5.0"
   implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3"
 
@@ -45,4 +53,15 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+task mybatisGenerate {
+    doLast {
+        javaexec {
+            main = 'org.mybatis.generator.api.ShellRunner'
+            classpath = sourceSets.main.runtimeClasspath
+            args = ['-configfile', 'src/main/resources/mybatis/generatorConfig.xml', '-overwrite']
+        }
+    }
 }

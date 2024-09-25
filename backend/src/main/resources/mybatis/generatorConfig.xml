@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="id" targetRuntime="MyBatis3">
+    <!--  MapperにMapperアノテーションを付与   -->
+    <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+    <!-- xmlファイルを生成時に上書きするためのプラグイン -->
+    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+    <!-- コメント生成の抑制 -->
+    <commentGenerator>
+      <property name="suppressDate" value="true" />
+      <property name="addRemarkComments" value="false" />
+    </commentGenerator>
+
+    <!-- 接続情報 -->
+    <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://localhost:5432/sandbox?useSSL=false" userId="developer" password="1234"/>
+
+    <!-- 型の変換 -->
+    <javaTypeResolver >
+      <property name="useJSR310Types" value="true" />
+    </javaTypeResolver>
+
+    <!--  Entityの生成場所 -->
+    <javaModelGenerator targetPackage="sandbox.entity" targetProject="src/main/java/" />
+
+    <!--  Mapper(xml)の生成場所 -->
+    <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/" />
+
+    <!--  Mapper(java)の生成場所 -->
+    <javaClientGenerator targetPackage="sandbox.mapper" targetProject="src/main/java/" type="XMLMAPPER" />
+
+    <table schema="public" tableName="%">
+
+      <!-- 自動生成キーの設定 -->
+      <generatedKey column="id" sqlStatement="PostgreSQL" identity="true" />
+
+      <!-- Entityを付与する -->
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$0Entity" />
+
+
+    </table>
+  </context>
+</generatorConfiguration>
