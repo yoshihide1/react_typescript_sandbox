@@ -8,35 +8,38 @@
     <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
     <!-- コメント生成の抑制 -->
     <commentGenerator>
-      <property name="suppressDate" value="true" />
-      <property name="addRemarkComments" value="false" />
+      <!-- すべてのコメントを抑制 -->
+      <property name="suppressAllComments" value="true" />
     </commentGenerator>
 
     <!-- 接続情報 -->
     <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://localhost:5432/sandbox?useSSL=false" userId="developer" password="1234"/>
 
     <!-- 型の変換 -->
+    <!-- https://mybatis.org/generator/configreference/javaTypeResolver.html -->
     <javaTypeResolver >
       <property name="useJSR310Types" value="true" />
     </javaTypeResolver>
 
     <!--  Entityの生成場所 -->
-    <javaModelGenerator targetPackage="sandbox.entity" targetProject="src/main/java/" />
+    <javaModelGenerator targetPackage="sandbox.entity" targetProject="src/main/java/">
+      <property name="exampleTargetPackage" value="sandbox.entity.example" />
+      <property name="exampleTargetProject" value="src/main/java/"/>
+    </javaModelGenerator>
 
     <!--  Mapper(xml)の生成場所 -->
     <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/" />
 
     <!--  Mapper(java)の生成場所 -->
-    <javaClientGenerator targetPackage="sandbox.mapper" targetProject="src/main/java/" type="XMLMAPPER" />
+    <javaClientGenerator targetPackage="sandbox.mapper" targetProject="src/main/java/" type="XMLMAPPER"/>
 
     <table schema="public" tableName="%">
 
       <!-- 自動生成キーの設定 -->
-      <generatedKey column="id" sqlStatement="PostgreSQL" identity="true" />
+      <generatedKey column="id" sqlStatement="JDBC" identity="true" />
 
       <!-- Entityを付与する -->
       <domainObjectRenamingRule searchString="^(.*)$" replaceString="$0Entity" />
-
 
     </table>
   </context>
