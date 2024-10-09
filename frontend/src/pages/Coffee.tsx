@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import BackButton from '../components/button/BackButton';
-import { getRequest } from '../components/common/Request';
+import { useEffect, useState } from "react";
+import BackButton from "../components/button/BackButton";
+import { getRequest } from "../components/common/ApiUtils";
 
 interface CoffeeResponse {
   id: number;
@@ -22,7 +22,7 @@ const Coffee = () => {
   };
 
   useEffect(() => {
-    getRequest('https://api.sampleapis.com/coffee/hot', callback);
+    getRequest("https://api.sampleapis.com/coffee/hot", callback);
   }, []);
 
   return (

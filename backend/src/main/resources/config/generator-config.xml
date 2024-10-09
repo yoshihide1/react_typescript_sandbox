@@ -3,9 +3,9 @@
 <generatorConfiguration>
   <context id="id" targetRuntime="MyBatis3">
     <!--  MapperにMapperアノテーションを付与   -->
-    <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
     <!-- xmlファイルを生成時に上書きするためのプラグイン -->
-    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
     <!-- コメント生成の抑制 -->
     <commentGenerator>
       <!-- すべてのコメントを抑制 -->
@@ -13,25 +13,28 @@
     </commentGenerator>
 
     <!-- 接続情報 -->
-    <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://localhost:5432/sandbox?useSSL=false" userId="developer" password="1234"/>
+    <jdbcConnection driverClass="org.postgresql.Driver"
+      connectionURL="jdbc:postgresql://localhost:5432/sandbox?useSSL=false" userId="developer"
+      password="1234" />
 
     <!-- 型の変換 -->
     <!-- https://mybatis.org/generator/configreference/javaTypeResolver.html -->
-    <javaTypeResolver >
+    <javaTypeResolver>
       <property name="useJSR310Types" value="true" />
     </javaTypeResolver>
 
     <!--  Entityの生成場所 -->
     <javaModelGenerator targetPackage="sandbox.entity" targetProject="src/main/java">
       <property name="exampleTargetPackage" value="sandbox.entity.example" />
-      <property name="exampleTargetProject" value="src/main/java/"/>
+      <property name="exampleTargetProject" value="src/main/java/" />
     </javaModelGenerator>
 
     <!--  Mapper(xml)の生成場所 -->
     <sqlMapGenerator targetPackage="sandbox.mapper" targetProject="src/main/resources" />
 
     <!--  Mapper(java)の生成場所 -->
-    <javaClientGenerator targetPackage="sandbox.mapper" targetProject="src/main/java" type="XMLMAPPER" />
+    <javaClientGenerator targetPackage="sandbox.mapper" targetProject="src/main/java"
+      type="XMLMAPPER" />
 
     <table schema="public" tableName="%">
 
@@ -40,6 +43,13 @@
 
       <!-- Entityを付与する -->
       <domainObjectRenamingRule searchString="^(.*)$" replaceString="$0Entity" />
+
+      <!-- TIMESTAMPTZをOffsetDateTimeにマッピング -->
+      <columnOverride column="created_at" javaType="java.time.OffsetDateTime" />
+      <columnOverride column="updated_at" javaType="java.time.OffsetDateTime" />
+      <!-- 特定のカラムをEnum型にマッピング -->
+      <columnOverride column="priority" javaType="sandbox.constant.Priority"
+        typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
 
     </table>
   </context>

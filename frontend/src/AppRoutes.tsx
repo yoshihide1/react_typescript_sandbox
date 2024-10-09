@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./tailwind.css";
 import "./App.css";
+import GlobalLayout from "./components/layout/Layout";
 import Coffee from "./pages/Coffee";
 import Home from "./pages/Home";
-import GlobalLayout from "./components/layout/Layout";
 import Todo from "./pages/Todo";
+import "./tailwind.css";
 
 const AppRoutes = () => {
   return (

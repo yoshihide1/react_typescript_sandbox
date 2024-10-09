@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import LinkButton from '../components/button/NavigateButton';
-import { getRequest } from '../components/common/Request';
-import CountButtonSet from '../components/sample/CountButtonSet';
-import postgresLogo from '/postgresql.svg';
-import reactLogo from '/react.svg';
-import springLogo from '/spring-icon.svg';
-import tsLogo from '/ts.svg';
-import viteLogo from '/vite.svg';
+import { useEffect } from "react";
+import LinkButton from "../components/button/NavigateButton";
+import { getRequest } from "../components/common/ApiUtils";
+import CountButtonSet from "../components/sample/CountButtonSet";
+import postgresLogo from "/postgresql.svg";
+import reactLogo from "/react.svg";
+import springLogo from "/spring-icon.svg";
+import tsLogo from "/ts.svg";
+import viteLogo from "/vite.svg";
 
 /**
  *
@@ -21,7 +21,7 @@ const Home = () => {
     console.log(res);
   };
   useEffect(() => {
-    getRequest('/api/sample', callback);
+    getRequest("/api/sample", callback);
   });
 
   return (

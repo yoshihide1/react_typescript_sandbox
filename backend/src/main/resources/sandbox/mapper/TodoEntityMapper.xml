@@ -3,6 +3,7 @@
 <mapper namespace="sandbox.mapper.TodoEntityMapper">
   <resultMap id="BaseResultMap" type="sandbox.entity.TodoEntity">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="priority" jdbcType="VARCHAR" property="priority" typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
     <result column="task" jdbcType="VARCHAR" property="task" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
@@ -27,6 +28,25 @@
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.priorityCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.apache.ibatis.type.EnumTypeHandler} and #{criterion.secondValue,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -60,13 +80,32 @@
                 </when>
               </choose>
             </foreach>
+            <foreach collection="criteria.priorityCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.apache.ibatis.type.EnumTypeHandler} and #{criterion.secondValue,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
           </trim>
         </if>
       </foreach>
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, task, created_at, updated_at
+    id, priority, task, created_at, updated_at
   </sql>
   <select id="selectByExample" parameterType="sandbox.entity.example.TodoEntityExample" resultMap="BaseResultMap">
     select
@@ -99,14 +138,19 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="sandbox.entity.TodoEntity" useGeneratedKeys="true">
-    insert into public.todo (task, created_at, updated_at
+    insert into public.todo (priority, 
+      task, created_at, updated_at
       )
-    values (#{task,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+    values (#{priority,jdbcType=VARCHAR,typeHandler=org.apache.ibatis.type.EnumTypeHandler}, 
+      #{task,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="sandbox.entity.TodoEntity" useGeneratedKeys="true">
     insert into public.todo
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="priority != null">
+        priority,
+      </if>
       <if test="task != null">
         task,
       </if>
@@ -118,6 +162,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="priority != null">
+        #{priority,jdbcType=VARCHAR,typeHandler=org.apache.ibatis.type.EnumTypeHandler},
+      </if>
       <if test="task != null">
         #{task,jdbcType=VARCHAR},
       </if>
@@ -141,6 +188,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.priority != null">
+        priority = #{record.priority,jdbcType=VARCHAR,typeHandler=org.apache.ibatis.type.EnumTypeHandler},
+      </if>
       <if test="record.task != null">
         task = #{record.task,jdbcType=VARCHAR},
       </if>
@@ -158,6 +208,7 @@
   <update id="updateByExample" parameterType="map">
     update public.todo
     set id = #{record.id,jdbcType=INTEGER},
+      priority = #{record.priority,jdbcType=VARCHAR,typeHandler=org.apache.ibatis.type.EnumTypeHandler},
       task = #{record.task,jdbcType=VARCHAR},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
@@ -168,6 +219,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="sandbox.entity.TodoEntity">
     update public.todo
     <set>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=VARCHAR,typeHandler=org.apache.ibatis.type.EnumTypeHandler},
+      </if>
       <if test="task != null">
         task = #{task,jdbcType=VARCHAR},
       </if>
@@ -182,7 +236,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="sandbox.entity.TodoEntity">
     update public.todo
-    set task = #{task,jdbcType=VARCHAR},
+    set priority = #{priority,jdbcType=VARCHAR,typeHandler=org.apache.ibatis.type.EnumTypeHandler},
+      task = #{task,jdbcType=VARCHAR},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

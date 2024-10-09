@@ -1,10 +1,11 @@
 package sandbox.controller.todo.form;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.beans.BeanUtils;
 
 import lombok.Data;
+import sandbox.constant.Priority;
 import sandbox.entity.TodoEntity;
 
 /**
@@ -13,8 +14,9 @@ import sandbox.entity.TodoEntity;
 @Data
 public class TodoCreateForm {
   private String task;
-  private LocalDateTime createdAt = LocalDateTime.now();
-  private LocalDateTime updatedAt = LocalDateTime.now();
+  private Priority priority;
+  private OffsetDateTime createdAt = OffsetDateTime.now();
+  private OffsetDateTime updatedAt = OffsetDateTime.now();
 
   /**
    * Entityに変換する

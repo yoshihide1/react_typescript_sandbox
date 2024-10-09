@@ -1,45 +1,57 @@
 package sandbox.entity;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+
+import sandbox.constant.Priority;
 
 public class TodoEntity {
-    private Integer id;
+  private Integer id;
 
-    private String task;
+  private Priority priority;
 
-    private LocalDateTime createdAt;
+  private String task;
 
-    private LocalDateTime updatedAt;
+  private OffsetDateTime createdAt;
 
-    public Integer getId() {
-        return id;
-    }
+  private OffsetDateTime updatedAt;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getTask() {
-        return task;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setTask(String task) {
-        this.task = task;
-    }
+  public Priority getPriority() {
+    return priority;
+  }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+  public void setPriority(Priority priority) {
+    this.priority = priority;
+  }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+  public String getTask() {
+    return task;
+  }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
+  public void setTask(String task) {
+    this.task = task;
+  }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 }
